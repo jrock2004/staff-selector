@@ -1,0 +1,40 @@
+<h2 class="text-lg font-semibold text-center mb-16">Select Staff</h2>
+<div class="flex mx-auto container">
+  <div class="mr-10 appt-container">
+    <div class="">
+      <div class="border-b flex justify-between pb-1">
+        <h3 class="uppercase font-semibold">Your Appointment</h3>
+        <span class="text-sm text-gray-600">1 hr 15 min</span>
+      </div>
+      <div class="mt-4 grid gap-3">
+        {{#each this.model.apptCards as |appt|}}
+          <ApptCard
+            @appt={{appt}}
+            @staffList={{this.model.staff}}
+            @showStaff={{this.showStaff}}
+            @selectedAppt={{this.selectedAppt}}
+            @toggleShowStaffEvent={{this.toggleShowStaff}}
+          />
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div>
+    {{#if this.showStaff}}
+
+      <div class="max-w-2xl grid gap-4">
+        {{#each this.model.staff as |staff|}}
+          <StaffCard
+            @staff={{staff}}
+            @setStaffEvent={{this.setStaff}}
+          />
+        {{/each}}
+      </div>
+
+    {{else}}
+      <div class="flex items-center h-full">
+        <h5>Choose a service on the left to select a staff member</h5>
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<button
+  class="border rounded shadow w-full p-3 flex {{if this.isSelected ' bg-blue-700 shadow-2xl'}}"
+  type="button"
+  {{on "click" this.selectCard}}
+>
+  <div class="flex items-center mr-4">
+    <img
+      class="w-12 rounded-full border"
+      src={{@appt.staff.img}}
+      alt="Service performed with anyone"
+    >
+  </div>
+  <div class={{if this.isSelected 'text-white'}}>
+    <h4 class="text-left font-semibold">{{@appt.serviceName}}</h4>
+    <span class="font-light">
+      with {{@appt.staff.fullName}}
+    </span>
+  </div>
+</button>
