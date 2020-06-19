@@ -20,7 +20,7 @@
     </div>
   </div>
   <div>
-    {{#if this.showStaff}}
+    {{#animated-if this.showStaff use=this.transition duration=1000}}
 
       <div class="max-w-2xl grid gap-4">
         {{#each this.model.staff as |staff|}}
@@ -35,6 +35,6 @@
       <div class="flex items-center h-full">
         <h5>Choose a service on the left to select a staff member</h5>
       </div>
-    {{/if}}
+    {{/animated-if}}
   </div>
 </div>

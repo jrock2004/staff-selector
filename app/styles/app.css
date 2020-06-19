@@ -4,4 +4,5 @@
 
 .appt-container {
   width: 320px;
+  z-index: 300;
 }
