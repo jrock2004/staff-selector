@@ -1,7 +1,8 @@
 <button
-  class="transition transition-shadow duration-700 border rounded shadow w-full p-3 flex {{if this.isSelected ' bg-blue-700 shadow-2xl'}}"
+  class="transition transition-shadow duration-700 border rounded shadow w-full p-3 flex {{if this.isSelected ' bg-blue-700 shadow-2xl selected-card' 'bg-white'}}"
   type="button"
   {{on "click" this.selectCard}}
+  ...attributes
 >
   <div class="flex items-center mr-4">
     <img

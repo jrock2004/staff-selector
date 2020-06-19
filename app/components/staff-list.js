@@ -13,6 +13,8 @@ export default class StaffListComponent extends Component {
         if (isEven)
           return staff;
       });
+    } else if (selectedAppt === 3) {
+      return this.args.staffList.slice(0,3);
     } else {
       return this.args.staffList;
     }

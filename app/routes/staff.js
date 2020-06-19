@@ -85,17 +85,21 @@ export default class StaffRoute extends Route {
           type: 'appt-card',
           attributes: {
             serviceName: 'Stunt Clinics',
-            staff: anyone
+          }
+        },
+        {
+          id: 3,
+          type: 'appt-card',
+          attributes: {
+            serviceName: 'Black Belt'
           }
         }
       ]
     });
 
-    let card = this.store.peekRecord('appt-card', 1);
-    card.staff = anyone;
-
-    card = this.store.peekRecord('appt-card', 2);
-    card.staff = anyone;
+    this.store.peekAll('appt-card').forEach(appt => {
+      appt.staff = anyone;
+    });
   }
 
   model() {
@@ -110,16 +114,10 @@ export default class StaffRoute extends Route {
 
     const selectedCard = model.apptCards.firstObject.id;
 
-    this.controller.selectedAppt = selectedCard;
-    this.controller.showStaff = true;
 
-    const filteredStaff = model.staff.filter((staff, index) => {
-      let isEven = index%2 === 0;
-
-      if (isEven)
-        return staff;
-    });
-
-    this.controller.filteredStaff = filteredStaff;
+    if (model.apptCards.length === 1) {
+      this.controller.selectedAppt = selectedCard;
+      this.controller.showStaff = true;
+    }
   }
 }

@@ -21,18 +21,12 @@
   </div>
   <div class="right-side">
     {{#animated-if this.showStaff use=this.transition duration=1000}}
-
       <div class="max-w-2xl grid gap-4 bg-white right-side-container">
         <StaffList
           @staffList={{this.model.staff}}
           @selectedAppt={{this.selectedAppt}}
           @setStaffEvent={{this.setStaff}}
         />
-      </div>
-
-    {{else}}
-      <div class="flex items-center right-side-container">
-        <h5>Choose a service on the left to select a staff member</h5>
       </div>
     {{/animated-if}}
   </div>
