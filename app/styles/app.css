@@ -6,3 +6,21 @@
   width: 320px;
   z-index: 300;
 }
+
+.isMobile {
+  flex-direction: column;
+  width: 100%;
+}
+
+.isMobile .right-side {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.isMobile .right-side .right-side-container {
+  width: 100%;
+}
+
+button.isMobileStaff {
+  width: 100%;
+}

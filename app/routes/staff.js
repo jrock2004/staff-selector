@@ -104,4 +104,22 @@ export default class StaffRoute extends Route {
       staff: this.store.peekAll('staff')
     })
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+
+    const selectedCard = model.apptCards.firstObject.id;
+
+    this.controller.selectedAppt = selectedCard;
+    this.controller.showStaff = true;
+
+    const filteredStaff = model.staff.filter((staff, index) => {
+      let isEven = index%2 === 0;
+
+      if (isEven)
+        return staff;
+    });
+
+    this.controller.filteredStaff = filteredStaff;
+  }
 }

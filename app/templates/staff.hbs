@@ -1,6 +1,6 @@
 <h2 class="text-lg font-semibold text-center mb-16">Select Staff</h2>
-<div class="flex mx-auto container">
-  <div class="mr-10 appt-container">
+<div class="flex mx-auto container h-full{{this.getMobileClasses}}">
+  <div class="mr-10 bg-white appt-container">
     <div class="">
       <div class="border-b flex justify-between pb-1">
         <h3 class="uppercase font-semibold">Your Appointment</h3>
@@ -19,20 +19,19 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="right-side">
     {{#animated-if this.showStaff use=this.transition duration=1000}}
 
-      <div class="max-w-2xl grid gap-4">
-        {{#each this.model.staff as |staff|}}
-          <StaffCard
-            @staff={{staff}}
-            @setStaffEvent={{this.setStaff}}
-          />
-        {{/each}}
+      <div class="max-w-2xl grid gap-4 bg-white right-side-container">
+        <StaffList
+          @staffList={{this.model.staff}}
+          @selectedAppt={{this.selectedAppt}}
+          @setStaffEvent={{this.setStaff}}
+        />
       </div>
 
     {{else}}
-      <div class="flex items-center h-full">
+      <div class="flex items-center right-side-container">
         <h5>Choose a service on the left to select a staff member</h5>
       </div>
     {{/animated-if}}

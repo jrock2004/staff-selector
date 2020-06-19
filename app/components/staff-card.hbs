@@ -1,7 +1,6 @@
-{{yield}}
 <button
   type="button"
-  class="border rounded shadow w-full p-3 flex {{if this.isSelected ' bg-blue-700 shadow-2xl'}}"
+  class="border rounded shadow w-full p-3 flex{{this.getMobileClasses}}"
   {{on "click" (fn @setStaffEvent @staff)}}
 >
   <div class="flex items-center mr-4">
@@ -11,7 +10,7 @@
       alt="Service performed with anyone"
     >
   </div>
-  <div class="{{if @staff.description 'max-w-xs' 'w-full'}}{{if this.isSelected ' text-white'}}">
+  <div class="{{if @staff.description 'max-w-xs' 'w-full'}}">
     <h4 class="text-center font-semibold text-lg mb-3">
       {{concat @staff.firstName ' ' @staff.lastName}}
     </h4>

@@ -1,0 +1,6 @@
+{{#animated-each this.filteredStaff use=this.transition as |staff|}}
+  <StaffCard
+    @staff={{staff}}
+    @setStaffEvent={{@setStaffEvent}}
+  />
+{{/animated-each}}

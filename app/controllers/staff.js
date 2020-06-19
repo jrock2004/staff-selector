@@ -13,16 +13,36 @@ export default class StaffController extends Controller {
   @tracked selectedAppt = null;
 
   @service store;
+  @service media;
+
+  get getMobileClasses() {
+    return this.media.mobile ? ' isMobile' : null;
+  }
 
   *transition({ insertedSprites, removedSprites, duration }) {
     let left = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().left || window.innerWidth;
+    let top = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().top || window.innerHeight;
+    let isMobile = this.media.isMobile || false;
+
     for (let sprite of removedSprites) {
-      yield fadeOut(sprite)
+      if (isMobile) {
+        sprite.endAtPixel({y: top})
+      } else {
+        sprite.endAtPixel({x: left})
+      }
+
+      fadeOut(sprite, {duration: 500});
+      yield move(sprite, {duration: duration * (3 / 4)});
     }
 
     for (let sprite of insertedSprites) {
-      sprite.startAtPixel({x: left})
-      move(sprite, {duration: duration / 2});
+      if (isMobile) {
+        sprite.startAtPixel({y: top})
+      } else {
+        sprite.startAtPixel({x: left})
+      }
+
+      move(sprite, {duration: duration * (3 / 4)});
     }
   }
 
@@ -45,5 +65,11 @@ export default class StaffController extends Controller {
 
     this.selectedAppt = null;
     this.showStaff = !this.showStaff;
+  }
+
+  constructor(owner, args) {
+    super(owner, args);
+
+    this.transition = this.transition.bind(this);
   }
 }
