@@ -1,19 +1,25 @@
 <AnimatedTools />
 
 <header class="flex items-baseline justify-between px-6 py-4 bg-white border-b">
-  <h1 class="text-3xl font-bold">All Anime</h1>
-  <nav class="mr-4">
+  <h1 class="text-xl font-bold">All Anime</h1>
+  <nav class="flex flex-col mr-4 sm:flex-row">
     <LinkTo
-      class="ml-6 text-orange-900"
-      @route="staff"
+      class="text-orange-900 sm:ml-6"
+      @route="group"
     >
-      Multi Service
+      Group
     </LinkTo>
     <LinkTo
-      class="ml-6 text-orange-900"
+      class="text-orange-900 sm:ml-6"
+      @route="staff"
+    >
+      Multi
+    </LinkTo>
+    <LinkTo
+      class="text-orange-900 sm:ml-6"
       @route="single"
     >
-      Single Service
+      Single
     </LinkTo>
   </nav>
 </header>

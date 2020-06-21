@@ -1,0 +1,22 @@
+<div class="w-full">
+  <div class="flex items-baseline justify-between pb-1 mb-4 border-b">
+    <h3 class="font-semibold uppercase">Your Appointment</h3>
+    <span class="text-xs text-gray-700 ">1 hr 15 min</span>
+  </div>
+  <div class="grid gap-3">
+    {{#each @apptCards as |appt index|}}
+      {{#if @isGroup}}
+        <span class="-mb-2 font-light uppercase">
+          Guest {{sum index 1}}
+        </span>
+      {{/if}}
+      <ApptCard
+        @appt={{appt}}
+        @staffList={{@staff}}
+        @showStaff={{@showStaff}}
+        @selectedAppt={{@selectedAppt}}
+        @toggleShowStaffEvent={{@toggleShowStaff}}
+      />
+    {{/each}}
+  </div>
+</div>
