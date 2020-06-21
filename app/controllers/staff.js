@@ -6,7 +6,8 @@ import { fadeIn, fadeOut } from 'ember-animated/motions/opacity';
 // import move from 'ember-animated/motions/move';
 
 export default class StaffController extends Controller {
-  anyStaffImg = 'https://img2.pngio.com/profile-male-persona-profile-male-user-avatar-svg-png-icon-free-user-avatar-png-981_878.png';
+  anyStaffImg =
+    'https://img2.pngio.com/profile-male-persona-profile-male-user-avatar-svg-png-icon-free-user-avatar-png-981_878.png';
   anyStaffDesc = 'Maximize number of available appointment times.';
 
   @tracked showStaff = false;
@@ -51,8 +52,8 @@ export default class StaffController extends Controller {
   @action
   toggleShowStaff(apptSelected) {
     if (this.selectedAppt && this.selectedAppt === apptSelected.id) {
-      this.selectedAppt = null;
       this.showStaff = !this.showStaff;
+      this.selectedAppt = null;
     } else {
       this.selectedAppt = apptSelected.id;
       this.showStaff = true;
@@ -65,13 +66,26 @@ export default class StaffController extends Controller {
 
     appt.staff = staff;
 
-    this.selectedAppt = null;
-    this.showStaff = !this.showStaff;
+    // this.selectedAppt = null;
+    // this.showStaff = !this.showStaff;
+    this.toggleShowStaff(appt);
   }
 
   constructor(owner, args) {
     super(owner, args);
 
     this.transition = this.transition.bind(this);
+    // this.handleResize = this.handleResize.bind(this);
+
+    // window.addEventListener('resize', this.handleResize);
   }
+
+  // handleResize() {
+  //   console.log(this);
+  //   if (!this.media.isMobile) {
+  //     this.showStaff = true;
+  //   } else {
+  //     this.showStaff = false;
+  //   }
+  // }
 }

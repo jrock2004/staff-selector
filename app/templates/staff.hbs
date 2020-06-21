@@ -1,27 +1,28 @@
-<h2 class="text-lg font-semibold text-center mb-16">Select Staff</h2>
-<div class="flex mx-auto container h-full{{this.getMobileClasses}}">
-  <div class="mr-10 bg-white appt-container">
-    <div class="">
-      <div class="border-b flex justify-between pb-1">
-        <h3 class="uppercase font-semibold">Your Appointment</h3>
-        <span class="text-sm text-gray-600">1 hr 15 min</span>
-      </div>
-      <div class="mt-4 grid gap-3">
-        {{#each this.model.apptCards as |appt|}}
-          <ApptCard
-            @appt={{appt}}
-            @staffList={{this.model.staff}}
-            @showStaff={{this.showStaff}}
-            @selectedAppt={{this.selectedAppt}}
-            @toggleShowStaffEvent={{this.toggleShowStaff}}
-          />
-        {{/each}}
-      </div>
+<h2 class="mb-16 text-xl font-semibold text-center">
+  Select Staff
+</h2>
+
+<div class="flex mx-auto sm:grid sm:gap-5 sm:grid-cols-2 md:w-desktop">
+  <div class="w-full">
+    <div class="flex items-baseline justify-between pb-1 mb-8 border-b">
+      <h3 class="font-semibold uppercase">Your Appointment</h3>
+      <span class="text-xs text-gray-600 ">1 hr 15 min</span>
+    </div>
+    <div class="grid gap-3">
+      {{#each this.model.apptCards as |appt|}}
+        <ApptCard
+          @appt={{appt}}
+          @staffList={{this.model.staff}}
+          @showStaff={{this.showStaff}}
+          @selectedAppt={{this.selectedAppt}}
+          @toggleShowStaffEvent={{this.toggleShowStaff}}
+        />
+      {{/each}}
     </div>
   </div>
-  <div class="right-side">
+  <div>
     {{#animated-if this.showStaff use=this.transition duration=1000}}
-      <div class="max-w-2xl grid gap-4 bg-white right-side-container">
+      <div class="absolute inset-y-0 left-0 right-0 z-50 pt-10 bg-white shadow grid gap-4 sm:relative sm:bg-transparent sm:shadow-none sm:pt-0">
         <StaffList
           @staffList={{this.model.staff}}
           @selectedAppt={{this.selectedAppt}}

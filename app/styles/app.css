@@ -1,27 +1,6 @@
-.container {
-  width: 800px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-.appt-container {
-  width: 320px;
-  z-index: 300;
-}
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-.isMobile {
-  flex-direction: column;
-  width: 100%;
-}
-
-.isMobile .right-side {
-  margin-top: 30px;
-  width: 100%;
-}
-
-.isMobile .right-side .right-side-container {
-  width: 100%;
-  z-index: 600;
-}
-
-button.isMobileStaff {
-  width: 100%;
-}

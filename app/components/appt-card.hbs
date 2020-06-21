@@ -6,14 +6,14 @@
 >
   <div class="flex items-center mr-4">
     <img
-      class="w-12 rounded-full border"
+      class="w-12 border rounded-full"
       src={{@appt.staff.img}}
       alt="Service performed with anyone"
     >
   </div>
   <div class={{if this.isSelected 'text-white'}}>
-    <h4 class="text-left font-semibold">{{@appt.serviceName}}</h4>
-    <span class="font-light">
+    <h4 class="font-semibold text-left">{{@appt.serviceName}}</h4>
+    <span class="font-light text-gray-700{{if this.isSelected 'text-white'}}">
       with {{@appt.staff.fullName}}
     </span>
   </div>
