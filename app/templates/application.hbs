@@ -1,7 +1,21 @@
 <AnimatedTools />
 
-<header class="px-6 py-4 bg-white border-b">
+<header class="flex items-baseline justify-between px-6 py-4 bg-white border-b">
   <h1 class="text-3xl font-bold">All Anime</h1>
+  <nav class="mr-4">
+    <LinkTo
+      class="ml-6 text-orange-900"
+      @route="staff"
+    >
+      Multi Service
+    </LinkTo>
+    <LinkTo
+      class="ml-6 text-orange-900"
+      @route="single"
+    >
+      Single Service
+    </LinkTo>
+  </nav>
 </header>
 
 <main class="w-full h-full p-6 bg-gray-100">
