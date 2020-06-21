@@ -6,10 +6,6 @@ import { fadeIn, fadeOut } from 'ember-animated/motions/opacity';
 // import move from 'ember-animated/motions/move';
 
 export default class StaffController extends Controller {
-  anyStaffImg =
-    'https://img2.pngio.com/profile-male-persona-profile-male-user-avatar-svg-png-icon-free-user-avatar-png-981_878.png';
-  anyStaffDesc = 'Maximize number of available appointment times.';
-
   @tracked showStaff = false;
   @tracked selectedAppt = null;
 

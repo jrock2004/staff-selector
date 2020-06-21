@@ -4,3 +4,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+.active {
+  text-decoration: underline;
+}
