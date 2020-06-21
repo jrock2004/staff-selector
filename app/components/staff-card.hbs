@@ -1,20 +1,20 @@
 <button
   type="button"
-  class="border rounded shadow w-full p-3 flex{{this.getMobileClasses}}"
+  class="flex w-full p-3 bg-white border rounded shadow"
   {{on "click" (fn @setStaffEvent @staff)}}
 >
   <div class="flex items-center mr-4">
     <img
-      class="w-16 rounded-full border"
+      class="w-16 border rounded-full"
       src={{@staff.img}}
       alt="Service performed with anyone"
     >
   </div>
   <div class="{{if @staff.description 'max-w-xs' 'w-full'}}">
-    <h4 class="text-center font-semibold text-lg mb-3">
+    <h4 class="mb-3 text-lg font-semibold text-center">
       {{concat @staff.firstName ' ' @staff.lastName}}
     </h4>
-    <p class="font-light text-sm">
+    <p class="text-sm font-light">
       {{@staff.description}}
     </p>
   </div>

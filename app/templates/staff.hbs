@@ -4,9 +4,9 @@
 
 <div class="flex mx-auto sm:grid sm:gap-5 sm:grid-cols-2 md:w-desktop">
   <div class="w-full">
-    <div class="flex items-baseline justify-between pb-1 mb-8 border-b">
+    <div class="flex items-baseline justify-between pb-1 mb-4 border-b">
       <h3 class="font-semibold uppercase">Your Appointment</h3>
-      <span class="text-xs text-gray-600 ">1 hr 15 min</span>
+      <span class="text-xs text-gray-700 ">1 hr 15 min</span>
     </div>
     <div class="grid gap-3">
       {{#each this.model.apptCards as |appt|}}
@@ -22,7 +22,7 @@
   </div>
   <div>
     {{#animated-if this.showStaff use=this.transition duration=1000}}
-      <div class="absolute inset-y-0 left-0 right-0 z-50 pt-10 bg-white shadow grid gap-4 sm:relative sm:bg-transparent sm:shadow-none sm:pt-0">
+      <div class="absolute inset-y-0 left-0 right-0 z-50 mt-40 overflow-y-scroll bg-white shadow grid gap-4 sm:relative sm:bg-transparent sm:shadow-none sm:mt-0">
         <StaffList
           @staffList={{this.model.staff}}
           @selectedAppt={{this.selectedAppt}}
