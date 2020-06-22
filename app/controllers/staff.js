@@ -12,16 +12,17 @@ export default class StaffController extends Controller {
   @service store;
   @service media;
 
-  get getMobileClasses() {
-    return this.media.mobile ? ' isMobile' : null;
-  }
+  // get getMobileClasses() {
+  //   return this.media.mobile ? ' isMobile' : null;
+  // }
 
   *transition({ insertedSprites, removedSprites }) {
+    console.log(arguments[0]);
     // let left = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().left || window.innerWidth;
     // let top = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().top || window.innerHeight;
     // let isMobile = this.media.isMobile || false;
 
-    for (let sprite of removedSprites) {
+    removedSprites.forEach((sprite) => {
       fadeOut(sprite, { duration: 750 });
       // if (isMobile) {
       //   sprite.endAtPixel({y: top})
@@ -31,9 +32,9 @@ export default class StaffController extends Controller {
 
       // fadeOut(sprite, {duration: 500});
       // yield move(sprite, {duration: duration * (3 / 4)});
-    }
+    });
 
-    for (let sprite of insertedSprites) {
+    insertedSprites.forEach((sprite) => {
       fadeIn(sprite, { duration: 750 });
       // if (isMobile) {
       //   sprite.startAtPixel({y: top})
@@ -42,7 +43,7 @@ export default class StaffController extends Controller {
       // }
 
       // move(sprite, {duration: duration * (3 / 4)});
-    }
+    });
   }
 
   @action
@@ -62,8 +63,6 @@ export default class StaffController extends Controller {
 
     appt.staff = staff;
 
-    // this.selectedAppt = null;
-    // this.showStaff = !this.showStaff;
     this.toggleShowStaff(appt);
   }
 
@@ -71,17 +70,5 @@ export default class StaffController extends Controller {
     super(owner, args);
 
     this.transition = this.transition.bind(this);
-    // this.handleResize = this.handleResize.bind(this);
-
-    // window.addEventListener('resize', this.handleResize);
   }
-
-  // handleResize() {
-  //   console.log(this);
-  //   if (!this.media.isMobile) {
-  //     this.showStaff = true;
-  //   } else {
-  //     this.showStaff = false;
-  //   }
-  // }
 }

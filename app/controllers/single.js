@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { fadeIn, fadeOut } from 'ember-animated/motions/opacity';
-// import move from 'ember-animated/motions/move';
 
 export default class SingleController extends Controller {
   @tracked showStaff = false;
@@ -12,37 +11,14 @@ export default class SingleController extends Controller {
   @service store;
   @service media;
 
-  get getMobileClasses() {
-    return this.media.mobile ? ' isMobile' : null;
-  }
-
   *transition({ insertedSprites, removedSprites }) {
-    // let left = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().left || window.innerWidth;
-    // let top = document.getElementsByClassName('appt-container')[0].getBoundingClientRect().top || window.innerHeight;
-    // let isMobile = this.media.isMobile || false;
-
-    for (let sprite of removedSprites) {
+    removedSprites.forEach((sprite) => {
       fadeOut(sprite, { duration: 750 });
-      // if (isMobile) {
-      //   sprite.endAtPixel({y: top})
-      // } else {
-      //   sprite.endAtPixel({x: left})
-      // }
+    });
 
-      // fadeOut(sprite, {duration: 500});
-      // yield move(sprite, {duration: duration * (3 / 4)});
-    }
-
-    for (let sprite of insertedSprites) {
+    insertedSprites.forEach((sprite) => {
       fadeIn(sprite, { duration: 750 });
-      // if (isMobile) {
-      //   sprite.startAtPixel({y: top})
-      // } else {
-      //   sprite.startAtPixel({x: left})
-      // }
-
-      // move(sprite, {duration: duration * (3 / 4)});
-    }
+    });
   }
 
   @action
@@ -62,8 +38,7 @@ export default class SingleController extends Controller {
 
     appt.staff = staff;
 
-    // this.selectedAppt = null;
-    // this.showStaff = !this.showStaff;
+    // For single service we do not want to close staff
     // this.toggleShowStaff(appt);
   }
 
